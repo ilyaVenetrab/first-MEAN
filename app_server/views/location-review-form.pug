@@ -1,0 +1,26 @@
+extends layout
+block content
+  .row
+    .col-lg-12
+      h1 Review Starcups
+  .row
+    .col-xs-12.col-md-6
+      form
+        div.input-group.mb-3
+          label.input-group-text(for='name') Name
+          .col-xs-12.col-sm-10
+            input.form-control(id='name' type='text')
+        div.input-group.mb-3
+          label.input-group-text(for='rating') Rating
+          .col-xs-12.col-sm-10
+            select.form-select(name='rating')
+              option 5
+              option 4
+              option 3
+              option 2
+              option 1
+        div.input-group.mb-3
+          label.input-group-text(for='review') Review
+          .col-xs-12.col-sm-10
+            textarea.form-control(id='review' aria-label='Review')
+        button.btn.btn-success Add my review

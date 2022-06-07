@@ -18,3 +18,7 @@ trim_trailing_whitespace = false
 
 [*.json]
 indent_size = 2
+
+[*.pug]
+indent_size = 2
+quote_type = single
