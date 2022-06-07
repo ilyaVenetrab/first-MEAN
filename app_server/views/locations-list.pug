@@ -1,67 +1,26 @@
 extends layout
 
+include includes/rating
+
 block content
   #banner
     .row
       .col-lg-6
-        h1 MEAN
-          small &nbsp; Find places to work with wifi near you!
+        h1= pageHeader.title
+          small &nbsp;#{pageHeader.subTitle}
   .row
     .col-xs-12.col-sm-8
       .row.list-group
-        .col-xs-12.list-group-item
-          h4
-            a(href='/location') Starcups
-            small.px-2
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star
-              span.bi.bi-star
-            span.badge.bg-info.text-dark.float-end 100m
-          p 125 High Street, Reading, RG6 1PS
-          div.row.gx-1
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Hot drinks
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Food
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Premium wifi
-        .col-xs-12.list-group-item
-          h4
-            a(href='/location') Starcups
-            small.px-2
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star
-              span.bi.bi-star
-            span.badge.bg-info.text-dark.float-end 100m
-          p 125 High Street, Reading, RG6 1PS
-          div.row.gx-1
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Hot drinks
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Food
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Premium wifi
-        .col-xs-12.list-group-item
-          h4
-            a(href='/location') Starcups
-            small.px-2
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star-fill
-              span.bi.bi-star
-              span.bi.bi-star
-            span.badge.bg-info.text-dark.float-end 100m
-          p 125 High Street, Reading, RG6 1PS
-          div.row.gx-1
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Hot drinks
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Food
-            div.col.col-auto.px-1
-              div.alert.alert-secondary.m-0 Premium wifi
+        each loaction in locations
+          .col-xs-12.list-group-item
+            h4
+              a(href='/location')= loaction.name
+              small.px-2
+                +outputRating(loaction.rating)
+            p= loaction.address
+            div.row.gx-1
+              each facility in loaction.facilities
+                div.col.col-auto.px-1
+                  div.alert.alert-secondary.m-0=facility
     .col-xs-12.col-sm-4
-      p.lead Looking for wifi and a seat? MEAN helps you find places to work when out and about. Perhaps with coffee, cake or a print? Let MEAN help you find the place you're looking for.
+      p.lead= sidebar

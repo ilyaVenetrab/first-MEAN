@@ -1,42 +1,37 @@
 extends layout
+
+include includes/rating
+
 block content
   .row
     .col-lg-12
-      h1 Starcups
+      h1= name
         small.px-2
-          span.bi.bi-star-fill
-          span.bi.bi-star-fill
-          span.bi.bi-star-fill
-          span.bi.bi-star
-          span.bi.bi-star
+          +outputRating(rating)
   .row
     .col-xs-12.col-md-9
       .row
         .col-xs-12.col-sm-6
-          p 125 High Street, Reading, RG6 1PS
+          p= address
           .card
             .card-body
               h2.card-title Opening hours
               div
-                p Monday - Friday : 7:00am - 7:00pm
-                p Saturday : 8:00am - 5:00pm
-                p Sunday : closed
+                for i in schedule
+                  p= i
           .card
             .card-body
               h2.card-title Facilities
               .row.gx-1
-                div.col.col-auto.px-1
-                  div.alert.alert-secondary.m-0 Hot drinks
-                div.col.col-auto.px-1
-                  div.alert.alert-secondary.m-0 Food
-                div.col.col-auto.px-1
-                  div.alert.alert-secondary.m-0 Premium wifi
+                each facility in facilities
+                  div.col.col-auto.px-1
+                    div.alert.alert-secondary.m-0=facility
         .col-xs-12.col-sm-6.location-map
           .card
             .card-body
               h2.card-title Location map
               div
-                img.img-responsive.img-rounded(src='https://picsum.photos/seed/picsum/200/300')
+                img.img-responsive.img-rounded(src=img)
       .row
         .col-xs-12
           .card
@@ -45,31 +40,16 @@ block content
                 a.btn.btn-primary.float-end(href='/location/review/new') Add review
                 h2.card-title Customer reviews
               .review-container
-                .row
-                  .review
-                    .row.gx-3
-                      .col.col-auto.px-2
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                      .col.col-auto 16 July 2021
-                    .col-xs-12
-                      p What a great place. I can't say enough good things about it.
-                .row
-                  .review
-                    .row.gx-3
-                      .col.col-auto.px-2
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                        span.bi.bi-star-fill
-                        span.bi.bi-star
-                        span.bi.bi-star
-                      .col.col-auto 18 July 2021
-                    .col-xs-12
-                      p It was okay. Coffee wasn't great, but the wifi was fast
+                for review in reviews
+                  .row
+                    .review
+                      .row.gx-3
+                        .col.col-auto.px-2
+                          +outputRating(review.rating)
+                        .col.col-auto= review.date
+                      .col-xs-12
+                        p= review.review
     .col-xs-12.col-md-3
-      p.lead Simon's cafe is on MEAN because it has accessible wifi ans space to sut down with you r laptop and get some work done.
-      p.lead If you've been and you like it - or if you don't - please leave a review to help other people just like you.
+      for content in placeContents
+        p.lead= content
 
