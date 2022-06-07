@@ -11,6 +11,7 @@
     "requireConfigFile": false
   },
   "rules": {
+    "quotes": ["error", "single"],
     "no-debugger": "warn",
     "no-dupe-keys": "warn",
     "no-dupe-args": "warn",
@@ -77,6 +78,6 @@
     // ES2015
     "constructor-super": "warn",
     "no-this-before-super": "warn",
-    "no-var": "warn"
+    "no-var": "error"
   }
 }
