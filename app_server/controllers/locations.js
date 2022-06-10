@@ -55,23 +55,38 @@ module.exports.locationInfo = function (_req, res) {
             'Food',
             'Premium wifi'
         ],
-        distance: '100m',
+        distance: [-0.9690884, 51.455041],
         reviews: [
             {
                 rating: 5,
-                date: '16 July 2021',
-                review: 'What a great place. I can\'t say enough good things about it.'
+                createdOn: '16 July 2021',
+                reviewText: 'What a great place. I can\'t say enough good things about it.',
+                author: 'Ilya Bartenev'
             },
             {
                 rating: 3,
-                date: '18 July 2021',
-                review: 'It was okay. Coffee wasn\'t great, but the wifi was fast'
+                createdOn: '18 July 2021',
+                reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast',
+                author: 'Ilya Bartenev'
             }
         ],
-        schedule: [
-            'Monday - Friday : 7:00am - 7:00pm',
-            'Saturday : 8:00am - 5:00pm',
-            'Sunday : closed'
+        openingTimes: [
+            {
+                days: 'Monday - Friday',
+                opening: '7:00am',
+                closing: '7:00pm',
+                closed: false
+            },
+            {
+                days: 'Saturday',
+                opening: '8:00am',
+                closing: '5:00pm',
+                closed: false
+            },
+            {
+                days: 'Sunday',
+                closed: true
+            }
         ],
         placeContents: [
             'Simon\'s cafe is on MEAN because it has accessible wifi ans space to sut down with you r laptop and get some work done.',
