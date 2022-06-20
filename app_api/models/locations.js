@@ -30,7 +30,7 @@ const reviewsScheme = new mongoose.Schema({
 
 const locationScheme = new mongoose.Schema({
     name: {
-        type: Number,
+        type: String,
         required: true
     },
     address: String,

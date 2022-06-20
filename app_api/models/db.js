@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 // const { request } = require('express');
 let gracefulShutdown;
 
-let dbURL = 'mongodb://localhost/first-MEAN';
+let dbURL = 'mongodb://localhost/MEAN';
 if (process.env.NODE_ENV === 'production') {
     dbURL = 'mongodb+srv://root:root@cluster0.dsk27.mongodb.net/MEAN';
 }
