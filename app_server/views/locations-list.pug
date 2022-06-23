@@ -10,13 +10,15 @@ block content
           small &nbsp;#{pageHeader.subTitle}
   .row
     .col-xs-12.col-sm-8
+      .error= message
       .row.list-group
         each loaction in locations
           .col-xs-12.list-group-item
             h4
-              a(href='/location')= loaction.name
+              a(href='/location/' + loaction._id)= loaction.name
               small.px-2
                 +outputRating(loaction.rating)
+              span.badge.bg-primary= loaction.distance
             p= loaction.address
             div.row.gx-1
               each facility in loaction.facilities

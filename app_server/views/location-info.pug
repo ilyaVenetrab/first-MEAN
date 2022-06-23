@@ -1,29 +1,31 @@
 extends layout
 
 include includes/rating
+include includes/format-date
 
 block content
   .row
     .col-lg-12
-      h1= name
+      h1= location.name
         small.px-2
-          +outputRating(rating)
+          +outputRating(location.rating)
   .row
     .col-xs-12.col-md-9
       .row
         .col-xs-12.col-sm-6
-          p= address
+          p= location.address
           .card
             .card-body
               h2.card-title Opening hours
               div
-                for i in schedule
-                  p= i
+                for i in location.openingTimes
+                  p= i.days
+                    span &nbsp;#{i.opening}-#{i.closing}
           .card
             .card-body
               h2.card-title Facilities
               .row.gx-1
-                each facility in facilities
+                each facility in location.facilities
                   div.col.col-auto.px-1
                     div.alert.alert-secondary.m-0=facility
         .col-xs-12.col-sm-6.location-map
@@ -40,13 +42,16 @@ block content
                 a.btn.btn-primary.float-end(href='/location/review/new') Add review
                 h2.card-title Customer reviews
               .review-container
-                for review in reviews
+                for review in location.reviews
                   .row
                     .review
                       .row.gx-3
                         .col.col-auto.px-2
                           +outputRating(review.rating)
-                        .col.col-auto= review.date
+                        .col.col-auto
+                          p= review.author
+                          small
+                            +formatDate(review.timestamp)
                       .col-xs-12
                         p= review.review
     .col-xs-12.col-md-3
