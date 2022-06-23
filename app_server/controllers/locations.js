@@ -4,7 +4,7 @@ let apiOptions = {
     server: 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://safe-journey-56345.herokuapp.com/';
+    apiOptions.server = 'https://safe-journey-56345.herokuapp.com';
 }
 
 const _formatDistance = (distance) => {
