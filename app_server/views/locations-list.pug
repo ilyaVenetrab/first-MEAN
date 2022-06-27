@@ -12,16 +12,16 @@ block content
     .col-xs-12.col-sm-8
       .error= message
       .row.list-group
-        each loaction in locations
+        each location in locations
           .col-xs-12.list-group-item
             h4
-              a(href='/location/' + loaction._id)= loaction.name
+              a(href='/location/' + location._id)= location.name
               small.px-2
-                +outputRating(loaction.rating)
-              span.badge.bg-primary= loaction.distance
-            p= loaction.address
+                +outputRating(location.rating)
+              span.badge.bg-primary= location.distance
+            p= location.address
             div.row.gx-1
-              each facility in loaction.facilities
+              each facility in location.facilities
                 div.col.col-auto.px-1
                   div.alert.alert-secondary.m-0=facility
     .col-xs-12.col-sm-4

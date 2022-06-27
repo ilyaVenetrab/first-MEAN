@@ -2,14 +2,16 @@ extends layout
 block content
   .row
     .col-lg-12
-      h1 Review #{title}
+      h1= title
   .row
     .col-xs-12.col-md-6
-      form
+      form(action='' method='post', role='form')
+        if error == 'val'
+          .alert.alert-danger(role='alert') All fields required, please try again
         div.input-group.mb-3
           label.input-group-text(for='name') Name
           .col-xs-12.col-sm-10
-            input.form-control(id='name' type='text')
+            input.form-control(id='name' type='text' name='name')
         div.input-group.mb-3
           label.input-group-text(for='rating') Rating
           .col-xs-12.col-sm-10
@@ -22,5 +24,5 @@ block content
         div.input-group.mb-3
           label.input-group-text(for='review') Review
           .col-xs-12.col-sm-10
-            textarea.form-control(id='review' aria-label='Review')
+            textarea.form-control(id='review' aria-label='Review' name='review')
         button.btn.btn-success Add my review
