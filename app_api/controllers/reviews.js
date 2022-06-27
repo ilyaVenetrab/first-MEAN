@@ -53,6 +53,7 @@ const addReview = function (req, res, location) {
         location.save((err, location) => {
             let thisReview;
             if (err) {
+                console.log('err => ', err);
                 sendJsonResponse(res, 404, err);
             } else {
                 updateAverageRating(location._id);
