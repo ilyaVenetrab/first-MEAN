@@ -1,22 +1,20 @@
 require('./locations');
 let mongoose = require('mongoose');
-// const { request } = require('express');
 let gracefulShutdown;
 
 let dbURL = 'mongodb://localhost/MEAN';
 if (process.env.NODE_ENV === 'production') {
     dbURL = 'mongodb+srv://root:root@cluster0.dsk27.mongodb.net/MEAN';
 }
-mongoose.connect(dbURL);
-
-mongoose.connection.on('connected', () => {
-    console.log(process.env.NODE_ENV);
-    console.log(`Mongoose connected to ${dbURL}`);
-});
-
-mongoose.connection.on('error', (error) => {
-    console.log(`Mongoose connected error: ${error}`);
-});
+mongoose
+    .connect(dbURL)
+    .then(x => {
+        console.log(`NODE_ENV => ${process.env.NODE_ENV}`);
+        console.log(`Connected to Mongo! Database name: "${x.connections[0].name}", Database url: "${dbURL}"`);
+    })
+    .catch(err => {
+        console.log(`Mongoose connected error: ${err}`);
+    });
 
 mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');

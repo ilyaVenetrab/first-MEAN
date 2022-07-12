@@ -1,83 +1,89 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "es6": true
-  },
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module",
-    "requireConfigFile": false
-  },
-  "rules": {
-    "quotes": ["error", "single"],
-    "no-debugger": "warn",
-    "no-dupe-keys": "warn",
-    "no-dupe-args": "warn",
-    "no-duplicate-case": "warn",
-    "no-empty": "warn",
-    "no-extra-semi": "warn",
-    "no-func-assign": "warn",
-    "no-obj-calls": "warn",
-    "no-sparse-arrays": "warn",
-    "no-unreachable": "warn",
-    "valid-typeof": "warn",
-    "no-multi-spaces": "warn",
-    "no-with": "warn",
-    "curly": "warn",
-    "no-unused-expressions": "warn",
-    "no-shadow-restricted-names": "warn",
-    "no-undefined": "off",
-    "camelcase": "warn",
-    "indent": [
-      "warn",
-      4,
-      {
-        // continuation indent
-        "MemberExpression": "off"
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "airbnb-typescript/base",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "kebab-case",
+            "type": "element"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "ngFirst",
+            "style": "camelCase",
+            "type": "attribute"
+          }
+        ],
+        "@typescript-eslint/array-type": ["error"],
+        "@typescript-eslint/consistent-type-assertions": [
+          "error",
+          {
+            "assertionStyle": "as"
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": ["error"],
+        "import/no-unresolved": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+        "no-underscore-dangle": "off",
+        "class-methods-use-this": "off",
+        "lines-between-class-members": "off",
+        "no-return-assign": "off",
+        "no-param-reassign": ["error", { "props": false }],
+        "no-plusplus": ["off"],
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/unbound-method": "off",
+        "import/no-cycle": "off",
+        "import/extensions": "off"
       }
-    ],
-    "array-bracket-spacing": [
-      "warn",
-      "never"
-    ],
-    "comma-spacing": "warn",
-    "comma-style": "warn",
-    "computed-property-spacing": "warn",
-    "func-call-spacing": "warn",
-    "key-spacing": "warn",
-    "keyword-spacing": "warn",
-    "new-cap": "warn",
-    "no-mixed-spaces-and-tabs": "warn",
-    "one-var": [
-      "warn",
-      {
-        "var": "never",
-        "let": "never",
-        "const": "never"
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    },
+    {
+      "files": ["*.component.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/no-negated-async": "off"
       }
-    ],
-    "semi": "warn",
-    "space-in-parens": [
-      "warn",
-      "never"
-    ],
-    "space-before-blocks": "warn",
-    "unicode-bom": "warn",
-    "new-parens": "warn",
-    "no-nested-ternary": "warn",
-    "space-infix-ops": "warn",
-    "space-unary-ops": [
-      "warn",
-      {
-        "words": true,
-        "nonwords": false
+    },
+    {
+      "files": ["*.js"],
+      "parserOptions": {
+        "ecmaVersion": 2020
+      },
+      "env": {
+        "es6": true
       }
-    ],
-    // ES2015
-    "constructor-super": "warn",
-    "no-this-before-super": "warn",
-    "no-var": "error"
-  }
+    }
+  ]
 }
