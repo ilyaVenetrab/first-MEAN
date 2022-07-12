@@ -8,8 +8,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./models/db');
 
-const indexRouter = require('../app_server/routes');
-const usersRouter = require('../app_server/routes/users');
+// const indexRouter = require('../app_server/routes');
+// const usersRouter = require('../app_server/routes/users');
 const indexAPI = require('./routes');
 
 const app = express();
