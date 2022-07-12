@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "npx nodemon app_api/app.js",
+    "start": "node app_api/app.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "npx eslint ./"
+    "lint": "npx eslint ./",
+    "postinstall": "cd app_api && npm install"
   },
   "engines": {
     "node": "v14.18.1",
