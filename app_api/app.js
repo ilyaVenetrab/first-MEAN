@@ -28,9 +28,9 @@ app.use(
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/first-mean')));
 app.use('/', express.static(path.join(__dirname, 'dist/first-mean')));
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/api', indexAPI);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
