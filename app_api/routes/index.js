@@ -18,4 +18,3 @@ router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdate
 router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 module.exports = router;
-
