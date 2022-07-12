@@ -1,0 +1,73 @@
+<div *ngIf="location$ | async as myLocation else loader;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>{{ myLocation.name }}</h1>
+            <small class="px-2">add myLocation.rating</small>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <p>{{ myLocation.address }}</p>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Opening hours</h2>
+                                <div>add days</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Facilities</h2>
+                                <div class="col col-auto px-1" *ngFor="let facility of myLocation.facilities">
+                                    <div class="alert alert-secondary m-0">{{ facility }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 location-map">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Location map</h2>
+                                <div>add Location map</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <a href="" class="btn btn-primary float-end">Add review</a>
+                                    <h2 class="card-title">Customer reviews</h2>
+                                </div>
+                                <div class="review-container">
+                                    <div class="row" *ngFor="let review of myLocation.reviews">
+                                        <div class="review">
+                                            <div class="row gx-3">
+                                                <div class="col col-auto px-2">{{ review.rating }}</div>
+                                                <div class="col col-auto">
+                                                    <p>{{ review.author }}</p>
+                                                </div>
+                                                <small>{{ review.timestamp }}</small>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p>{{ review.reviewText }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <p class="lead">add Content</p>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loader>
+    <div>...loading</div>
+</ng-template>
