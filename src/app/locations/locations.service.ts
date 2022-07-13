@@ -39,7 +39,7 @@ export class LocationsService {
 
 	public constructor(private _http: HttpClient) {
 		if (process.env['NODE_ENV'] === 'production') {
-			this._baseURL = 'https://safe-journey-56345.herokuapp.com';
+			this._baseURL = 'https://safe-journey-56345.herokuapp.com/api';
 		}
 	}
 
