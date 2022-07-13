@@ -26,8 +26,10 @@ app.use(
     }),
 );
 app.use(cors());
-console.log(path.join(__dirname, 'dist/first-mean'));
-app.use(express.static(path.join(__dirname, 'dist/first-mean')));
+
+
+console.log(path.join(__dirname, 'dist/first-mean/index.html'));
+app.use(express.static(path.join(__dirname, 'dist/first-mean/index.html')));
 // app.use('/', express.static(path.join(__dirname, 'dist/first-mean')));
 
 
