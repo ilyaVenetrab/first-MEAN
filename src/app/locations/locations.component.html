@@ -1,29 +1,38 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-8">
-        <div class="error" *ngIf="message else list">{{ message }}</div>
-        <ng-template #list>
-            <div class="row list-group">
-                <div class="col-xs-12 list-group-item" *ngFor="let location of locations">
-                    <h4>
-                        <a [routerLink]="['./', location._id]">{{ location.name }}</a>
-                        <small class="px-2">
-                            add start rating
-                        </small>
-                        <span class="badge bg-primary">distance</span>
-                    </h4>
-                    <p>{{ location.address }}</p>
-                    <div class="row gx-1">
-                        <div class="col col-auto px-1" *ngFor="let facility of location.facilities">
-                            <div class="col col-auto px-1">
-                                <div class="alert alert-secondary m-0">{{ facility }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-4" *ngFor="let location of locations">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">{{ location.name }}</h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ location.address }}</p>
     </div>
-    <div class="col-xs-12 col-sm-4">
-        <p class="lead">sidebar</p>
+    <div class="border-t border-gray-200">
+        <dl>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Rating</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ location.rating }}</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Facilities</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm" *ngFor="let facility of location.facilities">
+                            <div class="w-0 flex-1 flex items-center">
+                                <span class="ml-2 flex-1 w-0 truncate">{{ facility }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Opening Times</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm" *ngFor="let times of location.openingTimes">
+                            <div class="w-0 flex-1 flex items-center">
+                                <span class="ml-2 flex-1 w-0 truncate">{{ times.days }} {{ times.opening }} - {{ times.closing }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </div>
+        </dl>
     </div>
 </div>

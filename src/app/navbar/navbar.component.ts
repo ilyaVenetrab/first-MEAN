@@ -9,4 +9,10 @@ import { IPageHeader } from '../app.component';
 export class NavbarComponent {
 	@Input()
 	public pageHeader: IPageHeader = {} as IPageHeader;
+
+	public isOpen: boolean = false;
+
+	public toggleMenu(state: boolean = true): void {
+		this.isOpen = state;
+	}
 }

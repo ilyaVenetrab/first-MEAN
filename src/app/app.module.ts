@@ -6,9 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import { NavbarLinkComponent } from './navbar/navbar-link/navbar-link.component';
 
 @NgModule({
-	declarations: [AppComponent, NavbarComponent, FooterComponent, AboutComponent],
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		FooterComponent,
+		AboutComponent,
+		NavbarLinkComponent,
+	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
 	providers: [],
 	bootstrap: [AppComponent],
