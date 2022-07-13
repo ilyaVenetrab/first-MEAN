@@ -31,7 +31,7 @@ app.use(cors());
 console.log(path.join(__dirname, 'dist/first-mean/index.html'));
 app.use(express.static(path.join(__dirname, 'dist/first-mean')));
 // app.use('/', express.static(path.join(__dirname, 'dist/first-mean/index.html')));
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/first-mean/index.html')); // load the single view file (angular will handle the page changes on the front-end)
 });
 
