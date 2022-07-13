@@ -26,8 +26,12 @@ app.use(
     }),
 );
 app.use(cors());
+console.log(path.join(__dirname, 'dist/first-mean'));
 app.use(express.static(path.join(__dirname, 'dist/first-mean')));
-app.use('/', express.static(path.join(__dirname, 'dist/first-mean')));
+// app.use('/', express.static(path.join(__dirname, 'dist/first-mean')));
+
+
+
 // app.use('/', indexRouter);
 app.use('/api', indexAPI);
 // app.use('/users', usersRouter);
