@@ -1,0 +1,13 @@
+<ng-container>
+    <a  *ngFor="let link of links"
+        [routerLink]="[link.url]"
+        [routerLinkActive]="['bg-gray-900', 'text-white']"
+        #rla="routerLinkActive"
+        class="px-3 py-2 rounded-md text-sm font-medium"
+        [ngClass]="{'text-gray-300 hover:bg-gray-700 hover:text-white': !rla.isActive}"
+        aria-current="page"
+        (click)="clickEvent()"
+    >
+        {{ link.title }}
+    </a>
+</ng-container>
