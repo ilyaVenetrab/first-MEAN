@@ -1,4 +1,7 @@
-<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-4" *ngFor="let location of locations">
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-4"
+     *ngFor="let location of locations"
+     [routerLink]="['./', location._id]"
+>
     <div class="px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">{{ location.name }}</h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ location.address }}</p>
@@ -7,27 +10,23 @@
         <dl>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Rating</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ location.rating }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <app-rating [locationRating]="location.rating"></app-rating>
+                </dd>
             </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Distance</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {{ location.distance }}
+                </dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6" *ngIf="location.facilities.length">
                 <dt class="text-sm font-medium text-gray-500">Facilities</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
                         <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm" *ngFor="let facility of location.facilities">
                             <div class="w-0 flex-1 flex items-center">
                                 <span class="ml-2 flex-1 w-0 truncate">{{ facility }}</span>
-                            </div>
-                        </li>
-                    </ul>
-                </dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Opening Times</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
-                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm" *ngFor="let times of location.openingTimes">
-                            <div class="w-0 flex-1 flex items-center">
-                                <span class="ml-2 flex-1 w-0 truncate">{{ times.days }} {{ times.opening }} - {{ times.closing }}</span>
                             </div>
                         </li>
                     </ul>

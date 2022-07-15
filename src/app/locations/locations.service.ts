@@ -1,21 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { IReview } from './one-location/review/review.service';
+import { BD_URL } from '../shared/tokens';
 
 interface IOpeningTime {
 	days: string;
 	opening: string;
 	closing: string;
 	closed: boolean;
-}
-
-interface IReview {
-	rating: number;
-	_id: string;
-	author: string;
-	reviewText: string;
-	timestamp: number;
 }
 
 export interface ILocation {
@@ -26,22 +20,16 @@ export interface ILocation {
 	facilities: string[];
 	openingTimes: IOpeningTime[];
 	reviews: IReview[];
-	coords: number[];
+	distance: number[];
 }
 
 @Injectable({
 	providedIn: 'root',
 })
 export class LocationsService {
-	private _baseURL: string = 'http://localhost:4000/api';
-
 	private _headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
-	public constructor(private _http: HttpClient) {
-		if (process.env['NODE_ENV'] === 'production') {
-			this._baseURL = 'https://safe-journey-56345.herokuapp.com/api';
-		}
-	}
+	public constructor(@Inject(BD_URL) private readonly _bdUrl: string, private _http: HttpClient) {}
 
 	// Error handling
 	private _errorMgmt(error: HttpErrorResponse) {
@@ -60,7 +48,7 @@ export class LocationsService {
 	}
 
 	public getLocationsListByDistance(): Observable<ILocation[]> {
-		return this._http.get(`${this._baseURL}/locations?lng=-0.9690884&lat=51.455041`).pipe(
+		return this._http.get(`${this._bdUrl}/locations?lng=-0.9690884&lat=51.455041`).pipe(
 			map((res: Object) => {
 				return res as ILocation[];
 			}),
@@ -68,23 +56,23 @@ export class LocationsService {
 	}
 
 	public createLocations(data: any): Observable<any> {
-		return this._http.post(`${this._baseURL}/locations`, data).pipe(catchError(this._errorMgmt));
+		return this._http.post(`${this._bdUrl}/locations`, data).pipe(catchError(this._errorMgmt));
 	}
 
 	public getLocationsReadOne(id: any): Observable<any> {
-		return this._http.get(`${this._baseURL}/locations/${id}`, {
+		return this._http.get(`${this._bdUrl}/locations/${id}`, {
 			headers: this._headers,
 		});
 	}
 
 	public UpdateOneLocations(id: any, data: any): Observable<any> {
-		return this._http.put(`${this._baseURL}/locations/${id}`, data, {
+		return this._http.put(`${this._bdUrl}/locations/${id}`, data, {
 			headers: this._headers,
 		});
 	}
 
 	public deleteLocation(id: any): Observable<any> {
-		return this._http.delete(`${this._baseURL}/locations/${id}`, {
+		return this._http.delete(`${this._bdUrl}/locations/${id}`, {
 			headers: this._headers,
 		});
 	}
