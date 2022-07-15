@@ -1,0 +1,5 @@
+@import "../../../scss/variables";
+
+[class*="icon-"]:before {
+    color: $gold;
+}
