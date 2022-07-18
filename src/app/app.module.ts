@@ -9,11 +9,12 @@ import { AboutComponent } from './about/about.component';
 import { NavbarLinkComponent } from './navbar/navbar-link/navbar-link.component';
 import { ModalModule } from './modal/modal.module';
 import { BD_URL } from './shared/tokens';
+import { environment } from '../environments/environment';
 
-let bdURL: string = 'http://localhost:4000/api';
+/*let bdURL: string = 'http://localhost:4000/api';
 if (process.env['NODE_ENV'] === 'production') {
 	bdURL = 'https://safe-journey-56345.herokuapp.com/api';
-}
+}*/
 
 @NgModule({
 	declarations: [
@@ -28,7 +29,7 @@ if (process.env['NODE_ENV'] === 'production') {
 		{
 			provide: BD_URL,
 			//change from environment
-			useValue: bdURL,
+			useValue: environment.bdUrl,
 		},
 	],
 	bootstrap: [AppComponent],

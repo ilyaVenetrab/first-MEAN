@@ -4,6 +4,7 @@
 
 export const environment = {
 	production: false,
+	bdUrl: 'http://localhost:4000/api',
 };
 
 /*

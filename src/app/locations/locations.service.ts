@@ -48,6 +48,7 @@ export class LocationsService {
 	}
 
 	public getLocationsListByDistance(): Observable<ILocation[]> {
+		console.log('_bdUrl => ', this._bdUrl);
 		return this._http.get(`${this._bdUrl}/locations?lng=-0.9690884&lat=51.455041`).pipe(
 			map((res: Object) => {
 				return res as ILocation[];
